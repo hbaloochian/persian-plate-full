@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "allowed_hosts": [],
+  "services": {
+    "auth.login": {
+      "base_url": "",
+      "path": "",
+      "method": "POST",
+      "timeout_seconds": 15,
+      "auth_profile": "none",
+      "request_adapter": "login_v1",
+      "response_adapter": "login_v1"
+    },
+    "auth.account_status": {
+      "base_url": "",
+      "path": "",
+      "method": "GET",
+      "timeout_seconds": 15,
+      "auth_profile": "account_auth",
+      "request_adapter": "empty_v1",
+      "response_adapter": "account_status_v1"
+    },
+    "plate.freight": {
+      "base_url": "",
+      "path": "",
+      "method": "POST",
+      "timeout_seconds": 15,
+      "auth_profile": "plate_auth",
+      "request_adapter": "plate_freight_v1",
+      "response_adapter": "plate_freight_v1"
+    },
+    "plate.passenger": {
+      "base_url": "",
+      "path": "",
+      "method": "POST",
+      "timeout_seconds": 15,
+      "auth_profile": "plate_auth",
+      "request_adapter": "plate_passenger_v1",
+      "response_adapter": "plate_passenger_v1"
+    },
+    "plate.international": {
+      "base_url": "",
+      "path": "",
+      "method": "POST",
+      "timeout_seconds": 15,
+      "auth_profile": "international_auth",
+      "request_adapter": "plate_international_v1",
+      "response_adapter": "plate_international_v1"
+    },
+    "driver.inquiry": {
+      "base_url": "",
+      "path": "",
+      "method": "POST",
+      "timeout_seconds": 15,
+      "auth_profile": "driver_auth",
+      "request_adapter": "driver_v1",
+      "response_adapter": "driver_v1"
+    },
+    "violation.create": {
+      "base_url": "",
+      "path": "",
+      "method": "POST",
+      "timeout_seconds": 30,
+      "auth_profile": "violation_auth",
+      "request_adapter": "violation_v1",
+      "response_adapter": "violation_v1"
+    },
+    "attachment.upload": {
+      "base_url": "",
+      "path": "",
+      "method": "POST",
+      "timeout_seconds": 120,
+      "auth_profile": "attachment_auth",
+      "request_adapter": "attachment_v1",
+      "response_adapter": "attachment_v1"
+    }
+  },
+  "auth_profiles": {
+    "none": {
+      "type": "none"
+    },
+    "account_auth": {
+      "type": "bearer",
+      "secret_ref": "account_access_token"
+    },
+    "plate_auth": {
+      "type": "bearer",
+      "secret_ref": "plate_access_token"
+    },
+    "international_auth": {
+      "type": "api_key_header",
+      "header_name": "X-API-Key",
+      "secret_ref": "international_api_key"
+    },
+    "driver_auth": {
+      "type": "basic",
+      "username_secret_ref": "driver_username",
+      "password_secret_ref": "driver_password"
+    },
+    "violation_auth": {
+      "type": "bearer",
+      "secret_ref": "violation_access_token"
+    },
+    "attachment_auth": {
+      "type": "bearer",
+      "secret_ref": "attachment_access_token"
+    }
+  }
+}
